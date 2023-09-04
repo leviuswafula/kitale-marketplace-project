@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DMK Food delivery App </title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <style>
+  /* Reset default browser styles */
+body, h1, h2, h3, h4, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.banner {
+  background-color: #f2f2f2;
+  padding: 20px;
+  text-align: center;
+}
+
+.categories {
+  margin: 20px 0;
+}
+
+.categories ul {
+  list-style: none;
+  display: flex;
+}
+
+.categories ul li {
+  margin-right: 10px;
+}
+
+.featured-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.item img {
+  width: 100%;
+  }
+
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+   }
+     </style>
+
+     </head>
+    <body>
+  <header>
+    <h1>DMK food delivery App</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Categories</a></li>
+        <li><a href="#">Cart</a></li>
+        <li><a href="#">Account</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="banner">
+    <h2>Welcome to Sp Food Shopping App Your Favourite Food Store!</h2>
+    <p>Order your favorite food items from the comfort of your home.</p>
+	 <br>
+	  <p>
+	   <center>
+	  <i>call us:+254713713176 &nbspor&nbspEmail:larvisapport528@gmail.com</i>
+	    </center>
+	     </p>
+	      </br>
+
+  </section>
+
+  <section class="categories">
+    <h3>Categories</h3>
+    <ul>
+      <li><a href="#">Pizza</a></li>
+      <li><a href="#">Burgers</a></li>
+      <li><a href="#">Sushi</a></li>
+      <li><a href="#">Salads</a></li>
+      <li><a href="#">Desserts</a></li>
+       <li><a href="#">chips mwitu</a></li>
+       <li><a href="#">chappo</a></li>
+    </ul>
+  </section>
+
+  <section class="featured-items">
+    <h3>Featured Items</h3>
+    <div class="item">
+      <img src="C:\Users\MANAGER\larvie\pizza.png" alt="Pizza">
+      <h4>Pizza</h4>
+      <p>$8.99</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="item">
+      <img src="burgers.jpg" alt="Burgers">
+      <h4>Burger</h4>
+      <p>$8.99</p>
+      <button>Add to Cart</button>
+    </div>
+        <div class="item">
+      <img src="shushi.jpg" alt="shushi">
+      <h4>shushi</h4>
+      <p>$8.99</p>
+      <button>Add to Cart</button>
+    </div>
+        <div class="item">
+      <img src="salad.jpg" alt="salad">
+      <h4>salad</h4>
+      <p>$8.99</p>
+      <button>Add to Cart</button>
+    </div>
+        <div class="item">
+      <img src="C:\Users\MANAGER\larvie\desserts.png" alt="desserts">
+      <h4>desserts</h4>
+      <p>$9.99</p>
+      <button>Add to Cart</button>
+    </div>
+    <section class="featured-items">
+    <h3>Featured Items</h3>
+    <div class="item">
+      <img src="chips mwitu.jpg" alt="chips mwitu">
+      <h4>chips mwitu</h4>
+      <p>$12.50</p>
+      <button>Add to Cart</button>
+    </div>
+      <section class="featured-items">
+    <h3>Featured Items</h3>
+    <div class="item">
+      <img src="chapati.jpg" alt="chappo">
+      <h4>chappo</h4>
+      <p>$2.50</p>
+      <button>Add to Cart</button>
+    </div>
+    <!-- generate more foodstaffs as per customers' requests -->
+  </section>
+  
+  <script src="script.js"></script>
+  // Sp food items data
+const foodItemsData = [
+  { id: 1, name: "Pizza", price: 8.99 },
+  { id: 2, name: "Burger", price: 8.99 },
+  { id: 3, name: "shushi", price: 8.99 },
+ { id: 4, name: "salad", price:   8.99 },
+ { id: 5, name: "desserts", price: 9.99 }, 
+ { id: 6, name: "chipo mwitu", price: 12.50 },
+  { id: 7, name: "chappo", price: 2.50 },
+];
+
+// Display food items on the page
+function displayFoodItems() {
+  const foodItemsDiv = document.getElementById("foodItems");
+
+  foodItemsData.forEach(item => {
+    const foodItem = document.createElement("div");
+    foodItem.classList.add("food-item");
+    foodItem.innerHTML = `
+      <span>${item.name}</span>
+      <span>$${item.price}</span>
+      <button onclick="addToCart(${item.id})">Add to Cart</button>
+    `;
+
+    foodItemsDiv.appendChild(foodItem);
+  });
+}
+
+// Add item to the cart
+function addToCart(itemId) {
+  const selectedItem = foodItemsData.find(item => item.id === itemId);
+
+  const cartItemsUl = document.getElementById("cartItems");
+  const cartItem = document.createElement("li");
+  cartItem.innerHTML = `
+    <span>${selectedItem.name}</span>
+    <span>$${selectedItem.price}</span>
+  `;
+
+  cartItemsUl.appendChild(cartItem);
+}
+
+// Initialize the app
+function init() {
+  displayFoodItems();
+
+  const checkoutBtn = document.getElementById("checkoutBtn");
+  checkoutBtn.addEventListener("click", () => {
+    alert("Thank you for your order welcome back again@Sp!");
+  });
+}
+
+// Call init when the DOM is ready
+document.addEventListener("DOMContentLoaded", init);
+  <script/>
+  <footer>
+    <p>&copy; 2023 Sp Food Shopping App_Powered by LARVI-TECH.Shulepress.All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat App</title>
+  <style>
+  <text-align="centres"/>
+    /* Chat container */
+    .chat-container {
+      border: 2px solid #ccc;
+      width: 400px;
+      height: 800px;
+      overflow-y: scroll;
+      padding: 200px;
+    }
+
+    /* Chat message */
+    .chat-message {
+      background-color: #f1f1f1;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    /* User message */
+    .user-message {
+      background-color: #d0eaf5;
+    }
+
+    /* Bot message */
+    .bot-message {
+      background-color: #ded7cc;
+    }
+
+    /* Message input */
+    .message-input {
+      width: 100%;
+      padding: 10px;
+    }
+
+    /* Send button */
+    .send-button {
+      width: 100px;
+      padding: 100px;
+      background-color: green ;
+      color: white;  
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container" id="chatContainer">
+    <!-- Chat messages will be added dynamically here -->
+  </div>
+
+  <div class="message-input">
+    <input type="text" id="messageInput" placeholder="Type your message" />
+    <button class="send-button" onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    // Function to send a message
+    function sendMessage() {
+      var messageInput = document.getElementById("messageInput");
+      var message = messageInput.value;
+
+      if (message !== "") {
+        addMessage(message, "user-message");
+        simulateBotResponse(message);
+        messageInput.value = "";
+      }
+    }
+
+    // Function to add a message to the chat container
+    function addMessage(message, className) {
+      var chatContainer = document.getElementById("chatContainer");
+      var messageElement = document.createElement("div");
+      messageElement.textContent = message;
+      messageElement.className = "chat-message " + className;
+      chatContainer.appendChild(messageElement);
+      chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
+    }
+    // Function to simulate a bot response
+    function simulateBotResponse(userMessage)
+	 {
+      var botMessage = "Bot: Thank you for your message fella am larvie how can i be of help?owen: " + userMessage;
+      addMessage(botMessage, "bot-message1");
+	}
+  </script>
+</body>
+<footer><b>&copylarvieTech2023</b></footer>
+</html>
